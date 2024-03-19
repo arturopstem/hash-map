@@ -54,6 +54,19 @@ class HashMap {
     }
     return null;
   }
+
+  has(key) {
+    const hashCode = this.#hash(key);
+    const bucket = this.#buckets[hashCode];
+
+    if (bucket == null) {
+      return false;
+    }
+    if (bucket.size() === 0) {
+      return false;
+    }
+    return bucket.contains(key);
+  }
 }
 
 export default HashMap;
