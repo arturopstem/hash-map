@@ -97,6 +97,10 @@ class HashMap {
 
     return storedKeys;
   }
+
+  clear() {
+    this.#buckets.fill(null);
+  }
 }
 
 export default HashMap;
