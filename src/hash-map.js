@@ -133,6 +133,20 @@ class HashMap {
 
     return valuesArray;
   }
+
+  entries() {
+    const entriesArray = [];
+
+    this.#buckets.forEach((bucket) => {
+      let element = bucket.head();
+      while (element !== null) {
+        entriesArray.push([element.data.key, element.data.value]);
+        element = element.nextNode;
+      }
+    });
+
+    return entriesArray;
+  }
 }
 
 export default HashMap;
