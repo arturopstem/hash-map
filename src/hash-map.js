@@ -81,6 +81,9 @@ class HashMap {
     const index = bucket.findIndex(key);
     if (index) {
       bucket.removeAt(index);
+      if (bucket.size() === 0) {
+        this.#buckets[hashCode] = null;
+      }
       return true;
     }
     return false;
