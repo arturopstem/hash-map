@@ -1,3 +1,5 @@
+import LinkedList from './linked-list';
+
 class HashMap {
   #buckets;
 
@@ -16,6 +18,23 @@ class HashMap {
     }
 
     return hashCode;
+  }
+
+  set(key, value) {
+    const hashCode = this.#hash(key);
+    const bucket = this.#buckets[hashCode];
+
+    if (bucket == null) {
+      const newBucket = new LinkedList();
+      newBucket.append({ key, value });
+      this.#buckets[hashCode] = newBucket;
+    } else {
+      const index = bucket.findIndex(key);
+      if (index) {
+        bucket.removeAt(index);
+      }
+      bucket.append({ key, value });
+    }
   }
 }
 
