@@ -36,6 +36,24 @@ class HashMap {
       bucket.append({ key, value });
     }
   }
+
+  get(key) {
+    const hashCode = this.#hash(key);
+    const bucket = this.#buckets[hashCode];
+
+    if (bucket == null) {
+      return null;
+    }
+    if (bucket.size() === 0) {
+      return null;
+    }
+    const index = bucket.findIndex(key);
+    if (index) {
+      const node = bucket.at(index);
+      return node.data.value;
+    }
+    return null;
+  }
 }
 
 export default HashMap;
