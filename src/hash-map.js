@@ -85,6 +85,18 @@ class HashMap {
     }
     return false;
   }
+
+  length() {
+    let storedKeys = 0;
+
+    this.#buckets.forEach((bucket) => {
+      if (bucket) {
+        storedKeys += bucket.size();
+      }
+    });
+
+    return storedKeys;
+  }
 }
 
 export default HashMap;
