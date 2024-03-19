@@ -67,6 +67,24 @@ class HashMap {
     }
     return bucket.contains(key);
   }
+
+  remove(key) {
+    const hashCode = this.#hash(key);
+    const bucket = this.#buckets[hashCode];
+
+    if (bucket == null) {
+      return false;
+    }
+    if (bucket.size() === 0) {
+      return false;
+    }
+    const index = bucket.findIndex(key);
+    if (index) {
+      bucket.removeAt(index);
+      return true;
+    }
+    return false;
+  }
 }
 
 export default HashMap;
