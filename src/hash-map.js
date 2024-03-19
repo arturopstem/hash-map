@@ -141,10 +141,12 @@ class HashMap {
     const entriesArray = [];
 
     this.#buckets.forEach((bucket) => {
-      let element = bucket.head();
-      while (element !== null) {
-        entriesArray.push([element.data.key, element.data.value]);
-        element = element.nextNode;
+      if (bucket) {
+        let element = bucket.head();
+        while (element !== null) {
+          entriesArray.push([element.data.key, element.data.value]);
+          element = element.nextNode;
+        }
       }
     });
 
