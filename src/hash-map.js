@@ -30,7 +30,7 @@ class HashMap {
       this.#buckets[hashCode] = newBucket;
     } else {
       const index = bucket.findIndex(key);
-      if (index) {
+      if (index !== null) {
         bucket.removeAt(index);
       }
       bucket.append({ key, value });
@@ -48,7 +48,7 @@ class HashMap {
       return null;
     }
     const index = bucket.findIndex(key);
-    if (index) {
+    if (index !== null) {
       const node = bucket.at(index);
       return node.data.value;
     }
@@ -79,7 +79,7 @@ class HashMap {
       return false;
     }
     const index = bucket.findIndex(key);
-    if (index) {
+    if (index !== null) {
       bucket.removeAt(index);
       if (bucket.size() === 0) {
         this.#buckets[hashCode] = null;
